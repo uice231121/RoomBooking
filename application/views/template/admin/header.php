@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($_SESSION['menu'] == 'roomtype') echo 'active' ?>" href="<?php echo base_url() . 'LawsuitType/list' ?>">
+                    <a class="nav-link <?php if ($_SESSION['menu'] == 'roomtype') echo 'active' ?>" href="<?php echo base_url() . 'RoomType/list' ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-pencil-square-o text-info text-sm opacity-10"></i>
                         </div>
