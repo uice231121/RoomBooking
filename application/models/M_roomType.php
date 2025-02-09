@@ -47,20 +47,4 @@ class M_roomType extends Da_roomType
         return $this->db->query($sql);
     }
 
-    /*
-    * get_by_roomTypeName
-    * แสดงข้อมูลตาม roomTypeName
-    * @input -
-    * @output -
-    * @author Veerasarut Ketbut
-    * @Create Date 2568-02-09
-    * @Update Date 2568-02-09
-    */
-    public function get_by_roomTypeName($roomTypeName)
-    {
-        $sql = "SELECT * 
-                FROM roomType
-                WHERE Name = '$roomTypeName' ";
-        return $this->db->query($sql);
-    }
 }

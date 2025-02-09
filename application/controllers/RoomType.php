@@ -5,7 +5,7 @@ include_once dirname(__FILE__) . '/CB_Controller.php';
 class RoomType extends CB_Controller
 {
     /*
-    * @author TW
+    * @author VK
     */
     public function __construct()
     {
@@ -15,128 +15,67 @@ class RoomType extends CB_Controller
     public function List()
     {
         $this->session_check_admin();
-        $_SESSION['menu'] = 'roomType';
+        $_SESSION['menu'] = 'roomtype';
 
-        $this->load->model('M_roomType', 'm_roomType');
-        $data['arr_roomType'] = $this->m_roomType->get_all()->result();
+        $this->load->model('M_roomtype', 'm_rt');
+        $data['arr_roomtype'] = $this->m_rt->get_all()->result();
+
         $this->output('/roomType/v_list', $data);
     }
-
     /*
 	* edit
 	* แสดงหน้าแก้ไขสมาชิก
 	* @input -
 	* @output -
-	* @author Tadsawan Waeohong 
+	* @author Veerasarut Ketbut
 	* @Create Date 2566-01-29
 	*/
-    public function Edit($id)
+    public function insert()
     {
-        $this->session_check_admin();
-        $this->load->model('M_roomType', 'm_roomType');
-        $data['arr_roomType'] = $this->m_roomType->get_by_id($id)->row();
+        $this->load->model('M_roomType', 'm_rt');
+        $name = $this->input->post('Name');
 
-        
-        $_SESSION['menu'] = 'roomType';
-        $this->output('/roomType/v_edit', $data);
-        
+        $createUserId = $_SESSION['admin']->UserId;
+
+        $this->m_rt->insert($name, $createUserId);
+
+        redirect('RoomType/list');
     }
-
     /*
-	* delete
-	* delete สมาชิก
+	* edit
+	* แสดงหน้าแก้ไขสมาชิก
 	* @input -
 	* @output -
-	* @author Tadsawan Waeohong 
-	* @Create Date 2566-01-30
+	* @author Veerasarut Ketbut
+	* @Create Date 2566-01-29
 	*/
+    public function Edit()
+    {
+        $this->load->model('M_roomType', 'm_rt');
+        $RoomTypeId = $this->input->post('RoomTypeId');
+        $data = $this->m_rt->get_by_id($RoomTypeId)->row();
+
+        echo json_encode($data);
+    }
+
     public function delete()
     {
-        $this->load->model('M_user', 'm_user');
+        $this->load->model('M_roomType', 'm_rt');
 
-        $userId = $this->input->post('UserId');
-        $this->m_user->delete($userId, 0);
+        $roomTypeId = $this->input->post('roomTypeId');
+        $this->m_rt->delete($roomTypeId);
 
-        $isSytem = $this->input->post('IsSytem');
-        if ($isSytem) {
-            redirect('User/ListAdmin');
-        } else {
-            redirect('User/list');
-        }
+        redirect('roomType/list');
     }
 
     public function update()
     {
-        $this->load->model('M_user', 'm_user');
-        $userId = $this->input->post('UserId');
-        $firstName = $this->input->post('FirstName');
-        $lastName = $this->input->post('LastName');
-        $contactEmail = $this->input->post('ContactEmail');
-        $phoneNo = $this->input->post('PhoneNo');
-        $userName = $this->input->post('UserName');
-        $password = $this->input->post('Password');
-        $password2 = $this->input->post('Password2');
-        $address = $this->input->post('Address');
-        $status = $this->input->post('Status');
-        $startDate = $this->input->post('StartDate');
-        $endDate = $this->input->post('EndDate');
+        $this->load->model('M_roomType', 'm_rt');
+        $roomTypeId = $this->input->post('RoomTypeId');
+        $name = $this->input->post('Name');
 
-        // เช็ครหัสผ่านว่ากรอกมั้ย
-        if ($password2 == null) {
-            $password = $password;
-        } else {
-            $password = password_hash($password2, PASSWORD_DEFAULT);
-        }
+        $this->m_rt->update($roomTypeId, $name);
 
-        $modifyUserId = $_SESSION['admin']->UserId;
-
-        $this->m_user->update($userId, $firstName, $lastName, $contactEmail, $phoneNo, $address, $userName, $password, $modifyUserId, $startDate, $endDate, $status);
-
-        redirect('User/list');
-    }
-
-    public function insertAdmin()
-    {
-        $this->load->model('M_user', 'm_user');
-        $contactEmail = $this->input->post('ContactEmail');
-        $userName = $this->input->post('UserName');
-        $password = $this->input->post('Password');
-        $firstName = $this->input->post('FirstName');
-        $lastName = $this->input->post('LastName');
-
-        $isSytem = 1;
-        $createUserId = $_SESSION['admin']->UserId;
-        $isActive = 1;
-
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
-        $this->m_user->insertAdmin($contactEmail, $userName, $password, $createUserId, $isSytem, $isActive, $firstName, $lastName);
-
-        redirect('User/ListAdmin');
-    }
-
-    public function updateAdmin()
-    {
-        $this->load->model('M_user', 'm_user');
-        $userId = $this->input->post('UserId');
-        $contactEmail = $this->input->post('ContactEmail');
-        $userName = $this->input->post('UserName');
-        $password = $this->input->post('Password');
-        $password2 = $this->input->post('Password2');
-        $firstName = $this->input->post('FirstName');
-        $lastName = $this->input->post('LastName');
-
-        $modifyUserId = $_SESSION['admin']->UserId;
-
-        // เช็ครหัสผ่านว่ากรอกมั้ย
-        if ($password2 == null) {
-            $password = $password;
-        } else {
-            $password = password_hash($password2, PASSWORD_DEFAULT);
-        }
-
-        $this->m_user->updateAdmin($userId, $contactEmail, $userName, $password, $modifyUserId, $firstName, $lastName);
-
-        redirect('User/ListAdmin');
+        redirect('RoomType/list');
     }
 }

@@ -21,10 +21,10 @@ class Da_roomType extends CB_Model
     * @Create Date 2568-02-09
     * @Update Date 2568-02-09
     */
-    public function insert($name, $status)
+    public function insert($name, $createUserId)
     {
-        $sql = "INSERT INTO roomType (Name, Status, IsActive) 
-                VALUES ('$name', '$status', 1)";
+        $sql = "INSERT INTO roomType (Name, CreateUserId, Status, Isactive) 
+                VALUES ('$name', '$createUserId', 1, 1)";
         $this->db->query($sql);
     }
 
@@ -37,11 +37,10 @@ class Da_roomType extends CB_Model
     * @Create Date 2568-02-09
     * @Update Date 2568-02-09
     */
-    public function delete($id, $status)
+    public function delete($id)
     {
-        $sql = "UPDATE user
-            SET IsActive = '$status'
-            WHERE UserId = '$id' ";
+        $sql = "DELETE FROM roomtype           
+            WHERE RoomTypeId = '$id' ";
         $this->db->query($sql);
     }
 
@@ -54,35 +53,13 @@ class Da_roomType extends CB_Model
     * @Create Date 2568-02-09
     * @Update Date 2568-02-09
     */
-    public function update($userId, $firstName, $lastName, $contactEmail, $phoneNo, $address, $userName, $password, $modifyUserId, $startDate, $endDate, $status)
+    public function update($roomTypeId, $name)
     {
-        $sql = "UPDATE user
-            SET FirstName = '$firstName', LastName = '$lastName', ContactEmail = '$contactEmail', PhoneNo = '$phoneNo', Address = '$address', UserName = '$userName', Password = '$password', ModifyUserId = '$modifyUserId', StartDate = '$startDate', EndDate = '$endDate', Status = '$status', ModifyDate = NOW()
-            WHERE UserId = '$userId' ";
+        $sql = "UPDATE roomtype
+            SET Name = '$name'
+            WHERE RoomTypeId = '$roomTypeId' ";
         $this->db->query($sql);
     }
 
-    /*
-    * insert
-    * เพิ่มข้อมูล
-    * @input -
-    * @output -
-    * @author Veerasarut Ketbut
-    * @Create Date 2568-02-09
-    * @Update Date 2568-02-09
-    */
-    public function insertAdmin($contactEmail, $userName, $password, $createUserId, $isSytem, $isActive, $firstName, $lastName)
-    {
-        $sql = "INSERT INTO user(ContactEmail, UserName, Password, CreateUserId, IsSytem, IsActive, FirstName, LastName) 
-                VALUES ('$contactEmail', '$userName', '$password', '$createUserId', '$isSytem', '$isActive', '$firstName', '$lastName')";
-        $this->db->query($sql);
-    }
 
-    public function updateAdmin($userId, $contactEmail, $userName, $password, $modifyUserId, $firstName, $lastName)
-    {
-        $sql = "UPDATE user
-            SET ContactEmail = '$contactEmail', UserName = '$userName', Password = '$password', ModifyUserId = '$modifyUserId', FirstName = '$firstName', LastName = '$lastName', ModifyDate = NOW()
-            WHERE UserId = '$userId' ";
-        $this->db->query($sql);
-    }
 }
