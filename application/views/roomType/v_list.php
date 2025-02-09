@@ -86,7 +86,7 @@
                         <form role="form text-left" action="<?php echo base_url() . 'RoomType/insert' ?>" method="POST">
                             <label>ชื่อประเภทห้อง</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="Name" id="Name" placeholder="กรุฯากรอกชื่อประเภทห้อง" aria-label="Name" aria-describedby="email-addon" required>
+                                <input type="text" class="form-control" name="Name" id="Name" placeholder="กรุณากรอกชื่อประเภทห้อง" aria-label="Name" aria-describedby="email-addon" required>
                             </div>
                             <div class="text-end">
                                 <button type="button" class="btn bg-gradient-secondary mt-4 mb-0" data-bs-dismiss="modal">ปิด</button>
