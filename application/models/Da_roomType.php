@@ -53,10 +53,10 @@ class Da_roomType extends CB_Model
     * @Create Date 2568-02-09
     * @Update Date 2568-02-09
     */
-    public function update($roomTypeId, $name)
+    public function update($roomTypeId, $name, $modifyUserId)
     {
         $sql = "UPDATE roomtype
-            SET Name = '$name'
+            SET Name = '$name', ModifyUserId = $modifyUserId, ModifyDate = CURRENT_TIMESTAMP()
             WHERE RoomTypeId = '$roomTypeId' ";
         $this->db->query($sql);
     }

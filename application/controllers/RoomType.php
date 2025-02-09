@@ -74,7 +74,8 @@ class RoomType extends CB_Controller
         $roomTypeId = $this->input->post('RoomTypeId');
         $name = $this->input->post('Name');
 
-        $this->m_rt->update($roomTypeId, $name);
+        $modifyUserId = $_SESSION['admin']->UserId;
+        $this->m_rt->update($roomTypeId, $name, $modifyUserId );
 
         redirect('RoomType/list');
     }
