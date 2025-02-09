@@ -5,7 +5,7 @@ include_once("CB_Model.php");
 class Da_roomType extends CB_Model
 {
     /*
-    * @author Tadsawan Waeohong
+    * @author Veerasarut Ketbut
     */
     public function __construct()
     {
@@ -17,14 +17,14 @@ class Da_roomType extends CB_Model
     * เพิ่มข้อมูล
     * @input -
     * @output -
-    * @author Tadsawan Waeohong
-    * @Create Date 2566-01-30
-    * @Update Date 2566-01-30
+    * @author Veerasarut Ketbut
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
-    public function insert($firstName, $lastName, $contactEmail, $phoneNo, $address, $userName, $password, $createUserId, $isSytem, $isActive)
+    public function insert($name, $status)
     {
-        $sql = "INSERT INTO user(FirstName, LastName, ContactEmail, PhoneNo, Address, UserName, Password, CreateUserId, IsSytem, IsActive, Status) 
-                VALUES ('$firstName', '$lastName', '$contactEmail', '$phoneNo', '$address', '$userName', '$password', '$createUserId', '$isSytem', '$isActive', 1)";
+        $sql = "INSERT INTO roomType (Name, Status, IsActive) 
+                VALUES ('$name', '$status', 1)";
         $this->db->query($sql);
     }
 
@@ -33,9 +33,9 @@ class Da_roomType extends CB_Model
     * ลบ
     * @input -
     * @output -
-    * @author Tadsawan Waeohong
-    * @Create Date 2566-01-31
-    * @Update Date 2566-01-31
+    * @author Veerasarut Ketbut
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
     public function delete($id, $status)
     {
@@ -50,9 +50,9 @@ class Da_roomType extends CB_Model
     * แก้ไขข้อมูล
     * @input -
     * @output -
-    * @author Tadsawan Waeohong
-    * @Create Date 2566-01-31
-    * @Update Date 2566-01-31
+    * @author Veerasarut Ketbut
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
     public function update($userId, $firstName, $lastName, $contactEmail, $phoneNo, $address, $userName, $password, $modifyUserId, $startDate, $endDate, $status)
     {
@@ -67,9 +67,9 @@ class Da_roomType extends CB_Model
     * เพิ่มข้อมูล
     * @input -
     * @output -
-    * @author Tadsawan Waeohong
-    * @Create Date 2566-01-30
-    * @Update Date 2566-01-30
+    * @author Veerasarut Ketbut
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
     public function insertAdmin($contactEmail, $userName, $password, $createUserId, $isSytem, $isActive, $firstName, $lastName)
     {

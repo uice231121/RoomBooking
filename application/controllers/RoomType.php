@@ -22,12 +22,6 @@ class RoomType extends CB_Controller
         $this->output('/roomType/v_list', $data);
     }
 
-
-    public function AddAdmin()
-    {
-        $this->output('/admin/v_add');
-    }
-
     /*
 	* edit
 	* แสดงหน้าแก้ไขสมาชิก
@@ -36,19 +30,16 @@ class RoomType extends CB_Controller
 	* @author Tadsawan Waeohong 
 	* @Create Date 2566-01-29
 	*/
-    public function Edit($id, $isSytem)
+    public function Edit($id)
     {
         $this->session_check_admin();
-        $this->load->model('M_user', 'm_user');
-        $data['arr_user'] = $this->m_user->get_by_id($id)->row();
+        $this->load->model('M_roomType', 'm_roomType');
+        $data['arr_roomType'] = $this->m_roomType->get_by_id($id)->row();
 
-        if ($isSytem == 'true') {
-            $_SESSION['menu'] = 'admin';
-            $this->output('/admin/v_edit', $data);
-        } else {
-            $_SESSION['menu'] = 'user';
-            $this->output('/user/v_edit', $data);
-        }
+        
+        $_SESSION['menu'] = 'roomType';
+        $this->output('/roomType/v_edit', $data);
+        
     }
 
     /*

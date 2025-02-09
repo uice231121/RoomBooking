@@ -36,31 +36,31 @@ class M_roomType extends Da_roomType
     * @input -
     * @output -
     * @author Veerasarut Ketbut
-    * @Create Date 2566-01-31
-    * @Update Date 2566-01-31
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
     public function get_by_id($id)
     {
         $sql = "SELECT * 
-                FROM user 
-                WHERE UserId = $id";
+                FROM roomType 
+                WHERE RoomTypeId = $id";
         return $this->db->query($sql);
     }
 
     /*
-    * get_by_username
-    * แสดงข้อมูลตาม username
+    * get_by_roomTypeName
+    * แสดงข้อมูลตาม roomTypeName
     * @input -
     * @output -
     * @author Veerasarut Ketbut
-    * @Create Date 2566-02-24
-    * @Update Date 2566-02-24
+    * @Create Date 2568-02-09
+    * @Update Date 2568-02-09
     */
-    public function get_by_username($username)
+    public function get_by_roomTypeName($roomTypeName)
     {
         $sql = "SELECT * 
-                FROM user
-                WHERE UserName = '$username' ";
+                FROM roomType
+                WHERE Name = '$roomTypeName' ";
         return $this->db->query($sql);
     }
 }
