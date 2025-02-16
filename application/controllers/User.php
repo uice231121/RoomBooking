@@ -14,12 +14,19 @@ class User extends CB_Controller
 
     public function List()
     {
+        // $this->session_check_admin();
+        // $_SESSION['menu'] = 'user';
+
+        // $this->load->model('M_user', 'm_user');
+        // $data['arr_user'] = $this->m_user->get_all()->result();
+        // $this->output('/user/v_list', $data);
+
         $this->session_check_admin();
-        $_SESSION['menu'] = 'user';
+        $_SESSION['menu'] = 'admin';
 
         $this->load->model('M_user', 'm_user');
         $data['arr_user'] = $this->m_user->get_all()->result();
-        $this->output('/user/v_list', $data);
+        $this->output('/admin/v_list', $data);
     }
 
     public function ListAdmin()
