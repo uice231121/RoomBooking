@@ -5,7 +5,7 @@ class CB_Controller extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		session_start();
+		session_start();	
 	}
 	/**
 	 * Index Page for this controller.
@@ -24,6 +24,7 @@ class CB_Controller extends CI_Controller
 	 */
 	public function index()
 	{
+		$_SESSION['invalid'] = false;
 		$this->load->view('v_login');
 	}
 
