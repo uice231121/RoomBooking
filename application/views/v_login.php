@@ -53,12 +53,12 @@
                     </div>
                   </form>
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <!-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     ยังไม่ได้สมัครสมาชิก?
                     <a href="<?php echo base_url() . 'Account/register' ?>" class="text-primary text-gradient font-weight-bold">สมัครสมาชิก</a>
                   </p>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">

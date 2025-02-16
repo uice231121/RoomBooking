@@ -45,14 +45,14 @@
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link <?php if ($_SESSION['menu'] == 'user') echo 'active' ?>" href="<?php echo base_url() . 'User/list' ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-user text-primary text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">จัดการสมาชิก</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link <?php if ($_SESSION['menu'] == 'roomtype') echo 'active' ?>" href="<?php echo base_url() . 'RoomType/list' ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if ($_SESSION['menu'] == 'room') echo 'active' ?>" href="<?php echo base_url() . 'Lawsuit/list' ?>">
+                    <a class="nav-link <?php if ($_SESSION['menu'] == 'room') echo 'active' ?>" href="<?php echo base_url() . 'Room/list' ?>">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa fa-book text-success text-sm opacity-10"></i>
                         </div>
